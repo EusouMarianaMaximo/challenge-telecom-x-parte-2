@@ -1,0 +1,48 @@
+# **Telecom X – Parte 2: Modelo Preditivo de Churn**  
+
+## **🎯 Missão e Objetivos**  
+Desenvolver um **modelo preditivo** para identificar clientes com alta probabilidade de cancelamento (churn) na Telecom X, gerando **insights acionáveis** para estratégias de retenção.  
+
+### **Principais Etapas**  
+1. **Pré-processamento de dados**: Tratamento de valores ausentes, codificação de variáveis e normalização.  
+2. **Seleção de features**: Análise de correlação e redução de multicolinearidade (VIF).  
+3. **Modelagem**: Treinamento e comparação de **Regressão Logística** e **Random Forest**.  
+4. **Avaliação**: Métricas como acurácia, precisão, recall e F1-score.  
+5. **Interpretação**: Identificação dos fatores mais impactantes no churn.  
+
+---
+
+## **📊 Principais Resultados**  
+
+### **Fatores Críticos para Churn**  
+- **Contratos mensais** têm 3x mais evasão que anuais.  
+- **Fibra óptica** apresenta maior churn (possível relação com custo/qualidade).  
+- **Clientes novos** (menos de 1 ano) são 60% mais propensos a cancelar.  
+- **Serviços adicionais** (ex: suporte técnico) reduzem evasão em 35%.  
+
+### **Desempenho dos Modelos**  
+| Métrica          | Regressão Logística | Random Forest |  
+|------------------|---------------------|---------------|  
+| **Acurácia**     | 75,15%              | 77,33%        |  
+| **Recall**       | **78,25%**          | 62,57%        |  
+| **Precisão**     | 52,14%              | **56,61%**    |  
+
+✅ **Modelo escolhido**: **Regressão logística**, por seu **alto recall** (captura mais clientes em risco).  
+
+---
+
+## **🚀 Estratégias de Retenção**  
+1. **Converter contratos mensais em anuais** com benefícios exclusivos.  
+2. **Oferta de serviços adicionais** (ex: suporte técnico gratuito no primeiro ano).  
+3. **Programa de fidelidade** para clientes com menos de 12 meses.  
+4. **Revisão do pacote de fibra óptica** (custos/qualidade).  
+
+---
+
+## **📌 Como Reproduzir a Análise**  
+1. **Pré-requisitos**: Python 3.8+, bibliotecas (pandas, scikit-learn, imbalanced-learn).  
+2. **Execução**:  
+   ```bash  
+   git clone [repositório]  
+   jupyter notebook telecom_churn_part2.ipynb  
+   ```  
