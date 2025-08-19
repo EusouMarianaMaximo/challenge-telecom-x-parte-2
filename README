@@ -1,48 +1,137 @@
-# **Telecom X – Parte 2: Modelo Preditivo de Churn**  
+claro! aqui está um **README.md** completo para o seu repositório `challenge-telecom-x`, cobrindo tanto a parte 1 (EDA) quanto a parte 2 (modelagem preditiva):
 
-## **🎯 Missão e Objetivos**  
-Desenvolver um **modelo preditivo** para identificar clientes com alta probabilidade de cancelamento (churn) na Telecom X, gerando **insights acionáveis** para estratégias de retenção.  
+```markdown
+# 📊 Challenge Telecom X — Evasão de Clientes (Churn)
 
-### **Principais Etapas**  
-1. **Pré-processamento de dados**: Tratamento de valores ausentes, codificação de variáveis e normalização.  
-2. **Seleção de features**: Análise de correlação e redução de multicolinearidade (VIF).  
-3. **Modelagem**: Treinamento e comparação de **Regressão Logística** e **Random Forest**.  
-4. **Avaliação**: Métricas como acurácia, precisão, recall e F1-score.  
-5. **Interpretação**: Identificação dos fatores mais impactantes no churn.  
+Este projeto contém duas etapas do desafio **Telecom X**:
 
----
-
-## **📊 Principais Resultados**  
-
-### **Fatores Críticos para Churn**  
-- **Contratos mensais** têm 3x mais evasão que anuais.  
-- **Fibra óptica** apresenta maior churn (possível relação com custo/qualidade).  
-- **Clientes novos** (menos de 1 ano) são 60% mais propensos a cancelar.  
-- **Serviços adicionais** (ex: suporte técnico) reduzem evasão em 35%.  
-
-### **Desempenho dos Modelos**  
-| Métrica          | Regressão Logística | Random Forest |  
-|------------------|---------------------|---------------|  
-| **Acurácia**     | 75,15%              | 77,33%        |  
-| **Recall**       | **78,25%**          | 62,57%        |  
-| **Precisão**     | 52,14%              | **56,61%**    |  
-
-✅ **Modelo escolhido**: **Regressão logística**, por seu **alto recall** (captura mais clientes em risco).  
+1. **Parte 1 — Análise Exploratória (EDA)**  
+   Extração, limpeza, tratamento e análise exploratória dos dados de clientes para entender os padrões de evasão.  
+2. **Parte 2 — Modelagem Preditiva**  
+   Construção de modelos de Machine Learning para prever churn, avaliação de desempenho e identificação de fatores que mais influenciam a evasão.
 
 ---
 
-## **🚀 Estratégias de Retenção**  
-1. **Converter contratos mensais em anuais** com benefícios exclusivos.  
-2. **Oferta de serviços adicionais** (ex: suporte técnico gratuito no primeiro ano).  
-3. **Programa de fidelidade** para clientes com menos de 12 meses.  
-4. **Revisão do pacote de fibra óptica** (custos/qualidade).  
+## 🚀 Estrutura do Repositório
+
+```
+
+challenge-telecom-x/
+data/
+raw/                 # dados brutos (JSON)
+processed/           # dados tratados (CSV limpo)
+notebooks/
+TelecomX\_EDA.ipynb               # Parte 1: análise exploratória
+TelecomX\_Modelagem\_Churn.ipynb   # Parte 2: modelagem preditiva
+reports/
+figures/             # gráficos gerados
+Relatorio\_Evasao.html               # relatório EDA (gerado no notebook)
+Relatorio\_Modelagem\_Churn.html      # relatório modelagem (gerado no notebook)
+Relatorio\_Evasao\_Explicativo.md
+Relatorio\_Modelagem\_Churn\_Explicativo.md
+src/                   # scripts auxiliares (se necessário)
+requirements.txt       # dependências
+.gitignore
+README.md              # este arquivo
+
+````
 
 ---
 
-## **📌 Como Reproduzir a Análise**  
-1. **Pré-requisitos**: Python 3.8+, bibliotecas (pandas, scikit-learn, imbalanced-learn).  
-2. **Execução**:  
-   ```bash  
-   git clone [repositório]  
-   jupyter notebook telecom_churn_part2.ipynb  
-   ```  
+## 📦 Dependências
+
+- Python 3.10+
+- Pandas, Numpy
+- Matplotlib
+- scikit-learn
+- imbalanced-learn (para SMOTE)
+- requests
+
+Instale via:
+
+```bash
+pip install -r requirements.txt
+````
+
+---
+
+## 📂 Dados
+
+* **Fonte:** [TelecomX\_Data.json](https://raw.githubusercontent.com/alura-cursos/challenge2-data-science/refs/heads/main/TelecomX_Data.json)
+* **Dicionário:** [Descrição das variáveis](https://github.com/ingridcristh/challenge2-data-science/blob/main/TelecomX_dicionario.md)
+
+---
+
+## 📝 Parte 1 — Análise Exploratória
+
+* **Passos principais**:
+
+  * Extração do JSON e conversão para DataFrame;
+  * Limpeza e padronização (nulos, duplicados, categóricas, binárias);
+  * Criação da variável `Contas_Diarias` = faturamento mensal / 30;
+  * Análises descritivas e distribuições de churn;
+  * Gráficos salvos em `reports/figures/`;
+  * Relatório em HTML (`reports/Relatorio_Evasao.html`).
+
+---
+
+## 🤖 Parte 2 — Modelagem Preditiva
+
+* **Pré-processamento**:
+
+  * Remoção de colunas não preditivas (IDs);
+  * One-Hot Encoding para variáveis categóricas;
+  * Normalização quando necessário;
+  * Balanceamento opcional (SMOTE).
+
+* **Modelos**:
+
+  * **Regressão Logística** (normalização + OHE);
+  * **Random Forest** (OHE apenas).
+
+* **Avaliação**:
+
+  * Acurácia, Precisão, Recall, F1-score;
+  * Matriz de confusão;
+  * ROC-AUC;
+  * Comparativo em `reports/figures/comparativo_modelos.png`.
+
+* **Interpretação**:
+
+  * Coeficientes da Regressão Logística;
+  * Importância de variáveis no Random Forest.
+
+* **Relatório final**: `reports/Relatorio_Modelagem_Churn.html`.
+
+---
+
+## ▶️ Como Executar no Google Colab
+
+1. Abra o notebook **Parte 1**: `notebooks/TelecomX_EDA.ipynb`
+
+   * Gere o arquivo limpo `data/processed/telecomx_clean.csv`.
+2. Abra o notebook **Parte 2**: `notebooks/TelecomX_Modelagem_Churn.ipynb`
+
+   * Rode os modelos, gráficos e relatório preditivo.
+3. Os relatórios e figuras serão salvos automaticamente em `reports/`.
+
+---
+
+## 🧠 Insights Esperados
+
+* **Tenure** baixo → maior probabilidade de churn.
+* **Custos mensais/total elevados** → aumentam risco de cancelamento.
+* **Contratos mensais** → clientes menos fiéis.
+* Certas combinações de serviços podem estar associadas a maior evasão.
+
+---
+
+## 📌 Recomendações Estratégicas
+
+* Oferecer **incentivos de fidelização** (planos anuais, descontos, bônus de serviços).
+* Reforçar **onboarding e comunicação** para novos clientes.
+* Monitorar continuamente métricas de churn e atualizar os modelos.
+* Criar campanhas segmentadas para clientes com **alto risco** identificado.
+
+---
+
